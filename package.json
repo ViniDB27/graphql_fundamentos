@@ -4,19 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r sucrase/register src/index.js",
+    "server": "json-server --watch db.json",
+    "build": "rimraf ./dist && sucrase ./src -d ./dist --transforms imports",
+    "start": "npm run server & node -r dotenv/config dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ViniDB27/graphql_fundamentos"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vinicio Deivid Brejinski",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.12.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0"
   },
   "devDependencies": {
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "sucrase": "^3.32.0"
   }
 }
